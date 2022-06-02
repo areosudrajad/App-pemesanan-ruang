@@ -10,7 +10,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: BottomNav(),
     theme: appTheme,
-    title: "hasanm08 Flutter Project",
+    title: "UAS Rekyasa Areo Yolia Yuda",
   ));
 }
 
@@ -155,7 +155,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/instagram.png'),
                           onPressed: () async {
-                            const url = 'https://www.instagram.com/hasanm108/';
+                            const url = 'https://www.instagram.com/';
                           },
                         ),
                       ),
@@ -172,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/telegram.png'),
                           onPressed: () async {
-                            const url = 'https://t.me/hasanm08';
+                            const url = 'https://t.me/';
                           },
                         ),
                       ),
@@ -189,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           child: Image.asset('assets/images/whatsapp.png'),
                           onPressed: () async {
-                            const url = 'https://wa.me/+989910187797';
+                            const url = 'https://wa.me/+6289697987809';
                           },
                         ),
                       ),
