@@ -53,11 +53,11 @@ class _BottomNavState extends State<BottomNav> {
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.man,
+          Icons.person,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.man,
+          Icons.person,
           color: Colors.black,
         ),
         label: "Profil"));
@@ -213,7 +213,10 @@ class menu_screen extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown,],
+          children: <Widget>[
+            HomeTop(),
+            homeDown,
+          ],
           //
         ),
       ),
@@ -701,6 +704,5 @@ class City extends StatelessWidget {
         )
       ],
     );
-    
   }
 }

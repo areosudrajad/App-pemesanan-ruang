@@ -20,11 +20,11 @@ class Navigation extends StatelessWidget {
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.man,
+          Icons.person,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.man,
+          Icons.person,
           color: Colors.black,
         ),
         label: "Profile"));
@@ -91,11 +91,11 @@ class _NavigationTest extends State<NavigationTest> {
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.man,
+          Icons.person,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.man,
+          Icons.person,
           color: Colors.black,
         ),
         label: "Profil"));

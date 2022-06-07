@@ -53,11 +53,11 @@ class _BottomNavState extends State<BottomNav> {
         label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.man,
+          Icons.person,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.man,
+          Icons.person,
           color: Colors.black,
         ),
         label: "Profil"));
