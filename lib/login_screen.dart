@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class login_screen extends StatefulWidget {
+  const login_screen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<login_screen> createState() => _login_screenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _login_screenState extends State<login_screen> {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
