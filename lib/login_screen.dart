@@ -1,25 +1,15 @@
-//import 'package:flutter/material.dart';
-
-//class Deals extends StatelessWidget {
-  //@override
-  //Widget build(BuildContext context) {
-    //return Scaffold(
-      //body: Center(child: Text("Deals Clicked")),
-    //);
-  //}
-//}
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class login_screen extends StatefulWidget {
-  const login_screen({Key? key}) : super(key: key);
-  
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
-  State<login_screen> createState() => _DealsState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _DealsState extends State<login_screen> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -30,7 +20,7 @@ class _DealsState extends State<login_screen> {
       body: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 50,
           ),
           Text(
             'Aplikasi',
@@ -54,7 +44,7 @@ class _DealsState extends State<login_screen> {
           SizedBox(
             height: 50,
           ),
-          Image.asset('images/L1.png', height: 100),
+          Image.asset('images/L1.png', height: 200),
           SizedBox(
             height: 40,
           ),
