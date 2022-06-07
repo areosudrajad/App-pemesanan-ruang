@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'backupmain.dart';
 
 //Unused
 // ignore: must_be_immutable
@@ -17,7 +17,7 @@ class Navigation extends StatelessWidget {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.man,
@@ -88,7 +88,7 @@ class _NavigationTest extends State<NavigationTest> {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Home"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.man,

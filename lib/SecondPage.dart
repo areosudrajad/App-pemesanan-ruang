@@ -31,7 +31,7 @@ class SecondPage extends StatelessWidget {
           elevation: 0.0,
           centerTitle: true,
           title: Text(
-            'Search Result',
+            'Hasil Pencarian',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
           ),
         ),
@@ -54,44 +54,36 @@ class StackDown extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text('Best Deals for Next 6 Months',
+            Text('Pilihan',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)),
             ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
               children: <Widget>[
-                FlightCard(
-                  date: "01 Far 1399",
-                  percentOff: "34",
-                  price: "500",
-                  rating: 3.5,
-                  flightTo: "Rafsanjani",
-                  oldprice: "999",
+                roomcard(
+                  promo: "PROMO",
+                  price: "1.450.000",
+                  star: 3.5,
+                  flightTo: "Jebres",
                 ),
-                FlightCard(
-                  date: "02 Esf 1398",
-                  percentOff: "45",
-                  price: "600",
-                  rating: 5,
-                  flightTo: "Rafsanjani",
-                  oldprice: "1000",
+                roomcard(
+                  promo: "PROMO",
+                  price: "600.000",
+                  star: 5,
+                  flightTo: "Banjarsari",
                 ),
-                FlightCard(
-                  date: "01 Far 1399",
-                  percentOff: "34",
-                  price: "300",
-                  rating: 3.5,
-                  flightTo: "Rafsanjani",
-                  oldprice: "999",
+                roomcard(
+                  promo: "PROMO",
+                  price: "300.000",
+                  star: 3.5,
+                  flightTo: "Pasar Kliwon",
                 ),
-                FlightCard(
-                  date: "02 Esf 1398",
-                  percentOff: "45",
-                  price: "700",
-                  rating: 5,
-                  flightTo: "Rafsanjani",
-                  oldprice: "1000",
+                roomcard(
+                  promo: "",
+                  price: "700.000",
+                  star: 5,
+                  flightTo: "Banjarsari",
                 ),
               ],
             )
@@ -100,21 +92,23 @@ class StackDown extends StatelessWidget {
   }
 }
 
-class FlightCard extends StatelessWidget {
+class roomcard extends StatelessWidget {
   final String? price;
   final String? flightTo;
-  final String? percentOff;
-  final String? date;
-  final double? rating;
-  final String? oldprice;
+  final String? promo;
+  //final String? date;
+  final double? star;
+  //final String? oldprice;
 
-  FlightCard(
-      {this.date,
+  roomcard(
+      {
+        //this.date,
       this.flightTo,
-      this.percentOff,
+      this.promo,
       this.price,
-      this.rating,
-      this.oldprice});
+      this.star,
+      //this.oldprice
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -139,21 +133,21 @@ class FlightCard extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        price! + '\$',
+                        '\Rp. ' + price!,
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         width: prefix0.width! * .02,
                       ),
-                      Text(
-                        oldprice! + '\$',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey),
-                      ),
+                      // Text(
+                      //   oldprice! + '\$',
+                      //   style: TextStyle(
+                      //       fontSize: 15,
+                      //       fontWeight: FontWeight.bold,
+                      //       decoration: TextDecoration.lineThrough,
+                      //       color: Colors.grey),
+                      // ),
                     ],
                   ),
                   SizedBox(
@@ -163,20 +157,20 @@ class FlightCard extends StatelessWidget {
                     spacing: 5.0,
                     runSpacing: -5.0,
                     children: <Widget>[
-                      Tag(
-                        label: date!,
-                        avatar: Icon(
-                          Icons.calendar_today,
-                          size: 18,
-                        ),
-                      ),
+                      // Tag(
+                      //   label: date!,
+                      //   avatar: Icon(
+                      //     Icons.calendar_today,
+                      //     size: 18,
+                      //   ),
+                      // ),
                       Tag(
                         label: flightTo!,
-                        avatar: Icon(Icons.flight_takeoff, size: 18),
+                        avatar: Icon(Icons.flight_takeoff, size: 20),
                       ),
                       Tag(
-                        label: rating.toString(),
-                        avatar: Icon(Icons.star, size: 18),
+                        label: star.toString(),
+                        avatar: Icon(Icons.star, size: 20),
                       ),
                     ],
                   )
@@ -194,10 +188,10 @@ class FlightCard extends StatelessWidget {
                     color: discountBackground.withOpacity(.2)),
                 child: Center(
                   child: Text(
-                    percentOff! + '%',
+                    promo!,
                     style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
                         color: discountBackground),
                   ),
                 ),
@@ -245,7 +239,7 @@ class StackTop extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           ClipPath(
-           // clipper: Clipper08(),
+            // clipper: Clipper08(),
             child: Container(
               height: height! * .272, //400
               decoration: BoxDecoration(
@@ -281,8 +275,9 @@ class StackTop extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              /*prefix0.locs[0]*/ fromlocation! +
-                                  /* ' Beauty and old place */ '\n (City name Can have any lentgh)',
+                              'Kecamatan :  ' +
+                                  /*prefix0.locs[0]*/ fromlocation!,
+                              /* ' Beauty and old place */
                               style: TextStyle(fontSize: 16.0),
                               // key: from,
                             ),
@@ -299,18 +294,18 @@ class StackTop extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Spacer(),
-                      Expanded(
-                          flex: 1,
-                          child: IconButton(
-                              icon: Icon(
-                                Icons.import_export,
-                                color: Colors.black,
-                                size: prefix0.height! * .07,
-                              ),
-                              onPressed: () {
-                                // TODO Swap To And From texts
-                              }))
+                      // Spacer(),
+                      // Expanded(
+                      //     flex: 1,
+                      //     child: IconButton(
+                      //         icon: Icon(
+                      //           Icons.import_export,
+                      //           color: Colors.black,
+                      //           size: prefix0.height! * .07,
+                      //         ),
+                      //         onPressed: () {
+                      //           // TODO Swap To And From texts
+                      //         }))
                     ],
                   ),
                 ),

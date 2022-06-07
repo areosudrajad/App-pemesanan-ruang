@@ -14,7 +14,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class login_screen extends StatefulWidget {
   const login_screen({Key? key}) : super(key: key);
-
+  
   @override
   State<login_screen> createState() => _DealsState();
 }
