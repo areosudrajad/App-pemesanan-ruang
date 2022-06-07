@@ -20,24 +20,23 @@ class Navigation extends StatelessWidget {
         label: "Explore"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.favorite,
+          Icons.man,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.favorite,
+          Icons.man,
           color: Colors.black,
         ),
-        label: "WishList"));
+        label: "Profile"));
     items.add(BottomNavigationBarItem(
-        activeIcon: Icon(
-          Icons.local_offer,
-          color: appTheme.primaryColor,
-        ),
+        activeIcon: Icon(Icons.login
+            //color: appTheme.Primary
+            ),
         icon: Icon(
           Icons.local_offer,
           color: Colors.black,
         ),
-        label: "Deals"));
+        label: "Login"));
     items.add(BottomNavigationBarItem(
         //backgroundColor: Colors.blue,
         activeIcon: Icon(
@@ -92,34 +91,34 @@ class _NavigationTest extends State<NavigationTest> {
         label: "Explore"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.favorite,
+          Icons.man,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.favorite,
+          Icons.man,
           color: Colors.black,
         ),
-        label: "WishList"));
+        label: "Profil"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.local_offer,
+          Icons.login,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
           Icons.local_offer,
           color: Colors.black,
         ),
-        label: "Deals"));
-    items.add(BottomNavigationBarItem(
-        activeIcon: Icon(
-          Icons.notifications,
-          color: appTheme.primaryColor,
-        ),
-        icon: Icon(
-          Icons.notifications,
-          color: Colors.black,
-        ),
-        label: "Notifications"));
+        label: "Login"));
+    // items.add(BottomNavigationBarItem(
+    //     activeIcon: Icon(
+    //       Icons.notifications,
+    //       color: appTheme.primaryColor,
+    //     ),
+    //     icon: Icon(
+    //       Icons.notifications,
+    //       color: Colors.black,
+    //     ),
+    //     label: "Notifications"));
 
     return BottomNavigationBar(
       items: items,

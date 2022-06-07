@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class WishList extends StatelessWidget {
+class profil_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Wish List Clicked")),
+      body: Center(child: Text("Profil Clicked")),
     );
   }
 }

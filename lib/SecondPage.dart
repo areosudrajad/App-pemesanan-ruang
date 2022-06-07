@@ -245,7 +245,7 @@ class StackTop extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           ClipPath(
-            clipper: Clipper08(),
+           // clipper: Clipper08(),
             child: Container(
               height: height! * .272, //400
               decoration: BoxDecoration(
