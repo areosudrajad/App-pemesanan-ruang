@@ -27,7 +27,7 @@ class Navigation extends StatelessWidget {
           Icons.person,
           color: Colors.black,
         ),
-        label: "Profile"));
+        label: "Profilee"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(Icons.login
             //color: appTheme.Primary
@@ -98,7 +98,7 @@ class _NavigationTest extends State<NavigationTest> {
           Icons.person,
           color: Colors.black,
         ),
-        label: "Profil"));
+        label: "Profile"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.login,
