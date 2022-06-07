@@ -30,7 +30,7 @@ class _DealsState extends State<login_screen> {
       body: Column(
         children: [
           SizedBox(
-            height: 50,
+            height: 20,
           ),
           Text(
             'Aplikasi',
@@ -54,7 +54,7 @@ class _DealsState extends State<login_screen> {
           SizedBox(
             height: 50,
           ),
-          Image.asset('images/L1.png', height: 200),
+          Image.asset('images/L1.png', height: 100),
           SizedBox(
             height: 40,
           ),
