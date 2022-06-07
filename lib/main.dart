@@ -1,7 +1,7 @@
 import 'package:app_pemesaanan_ruang/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'Notifications.dart' as prefix0;
-import 'Deals.dart';
+import 'login_screen.dart';
 import 'SecondPage.dart';
 import 'WishList.dart';
 
@@ -15,7 +15,7 @@ void main() {
 }
 
 ThemeData appTheme = ThemeData(
-    primaryColor: Colors.purple,
+    primaryColor: Colors.yellow,
     /* Colors.tealAccent,*/
     secondaryHeaderColor: Colors.blue /* Colors.teal*/
     // fontFamily:
@@ -24,7 +24,12 @@ ThemeData appTheme = ThemeData(
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen(), WishList(), Deals(), prefix0.Notification()];
+final bodies = [
+  HomeScreen(),
+  WishList(),
+  login_screen(),
+  prefix0.Notification()
+];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -64,7 +69,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.local_offer,
           color: Colors.black,
         ),
-        label: "Deals"));
+        label: "Login"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.notifications,

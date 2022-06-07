@@ -12,14 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Deals extends StatefulWidget {
-  const Deals({Key? key}) : super(key: key);
+class login_screen extends StatefulWidget {
+  const login_screen({Key? key}) : super(key: key);
 
   @override
-  State<Deals> createState() => _DealsState();
+  State<login_screen> createState() => _DealsState();
 }
 
-class _DealsState extends State<Deals> {
+class _DealsState extends State<login_screen> {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
