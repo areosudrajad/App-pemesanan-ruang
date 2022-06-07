@@ -60,7 +60,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.person,
           color: Colors.black,
         ),
-        label: "Profil"));
+        label: "Profile"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.login,
