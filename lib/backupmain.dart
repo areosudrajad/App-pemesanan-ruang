@@ -213,13 +213,22 @@ class menu_screen extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: <Widget>[HomeTop(), homeDown, homeDown],
+          children: <Widget>[
+            HomeTop(),
+            homeDown,
+          ],
+          //
         ),
       ),
     );
   }
 }
-//tombol more info pojok bawah
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(child: Text("Menu Clicked")),
+//     );
+//   }
+// }
 
 var selectedloc = 0;
 List<String> locs = [
@@ -237,7 +246,7 @@ class HomeTop extends StatefulWidget {
 
 class _HomeTop extends State<HomeTop> {
   var isFlightselected = true;
-  TextEditingController c = TextEditingController(text: 'Pencarian');
+  TextEditingController c = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -246,7 +255,7 @@ class _HomeTop extends State<HomeTop> {
           clipper: Clipper08(),
           child: Container(
             height: height! * .65 < 450 ? height! * .65 : 500, //400
-            //color: Colors.tealAccent,
+            color: Colors.tealAccent,
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
               appTheme.primaryColor,
@@ -358,7 +367,7 @@ class _HomeTop extends State<HomeTop> {
                 Text(
                   'PENYEWAAN RUANG \n SURAKARTA',
                   style: TextStyle(
-                    fontSize: 25.0,
+                    fontSize: 24.0,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
@@ -411,8 +420,8 @@ class _HomeTop extends State<HomeTop> {
                   children: <Widget>[
                     InkWell(
                       child: Choice08(
-                          icon: Icons.hotel,
-                          text: "Ruang Kamar Hotel",
+                          icon: Icons.room,
+                          text: "Ruang 1",
                           selected: isFlightselected),
                       onTap: () {
                         setState(() {
@@ -423,17 +432,6 @@ class _HomeTop extends State<HomeTop> {
                     SizedBox(
                       width: width! * 0.055,
                     ),
-                    // InkWell(
-                    //   child: Choice08(
-                    //       icon: Icons.hotel,
-                    //       text: "Ruang 2",
-                    //       selected: !isFlightselected),
-                    //   onTap: () {
-                    //     setState(() {
-                    //       isFlightselected = false;
-                    //     });
-                    //   },
-                    // )
                   ],
                 )
               ],
@@ -517,7 +515,7 @@ class _Choice08State extends State<Choice08>
 }
 
 var viewallstyle =
-    TextStyle(fontSize: 14, color: appTheme.secondaryHeaderColor //Colors.teal
+    TextStyle(fontSize: 14, color: appTheme.primaryColor //Colors.teal
         );
 var homeDown = Column(
   children: <Widget>[
@@ -527,12 +525,12 @@ var homeDown = Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          SizedBox(
-            width: width! * 0.05,
-          ),
+          // SizedBox(
+          //   width: width! * 0.05,
+          // ),
           Text(
-            "Kamar Hotel",
-            style: TextStyle(color: Colors.black, fontSize: 20),
+            "RUANG",
+            style: TextStyle(color: Colors.black, fontSize: 16),
           ),
           Spacer(),
           Text("VIEW ALL", style: viewallstyle)
@@ -554,26 +552,46 @@ var homeDown = Column(
     ),
   ],
 );
+
 List<City> cities = [
   City(
-    image: "assets/images/KamarA.jpg",
-    name: "Kamar A",
-    monthyear: "Single Bed",
+    image: "assets/images/Kerman.png",
+    name: "Kerman",
+    monthyear: "Far 1399",
+    oldprice: "258500",
     newprice: "150000",
+    discount: "58",
   ),
   City(
-    image: "assets/images/KamarB.jpg",
-    name: "Kamar B",
-    monthyear: "Double Bed",
+    image: "assets/images/Mashhad.png",
+    name: "Mashhad",
+    monthyear: "Far 1399",
+    oldprice: "258500",
     newprice: "150000",
+    discount: "58",
+  ),
+  City(
+    image: "assets/images/Tehran.png",
+    name: "Tehran",
+    monthyear: "Far 1399",
+    oldprice: "258500",
+    newprice: "150000",
+    discount: "58",
   ),
 ];
 
 class City extends StatelessWidget {
-  final String? image, monthyear;
-  final String? name, newprice;
+  final String? image, monthyear, oldprice;
+  final String? name, discount, newprice;
 
-  const City({Key? key, this.image, this.monthyear, this.name, this.newprice})
+  const City(
+      {Key? key,
+      this.image,
+      this.monthyear,
+      this.oldprice,
+      this.name,
+      this.discount,
+      this.newprice})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -641,6 +659,22 @@ class City extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: Text(
+                          discount! + "%",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black),
+                        ),
+                      )
                     ],
                   ),
                   left: 10,
@@ -653,7 +687,7 @@ class City extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("\Rp. " + '${(newprice)}',
+            Text("\$ " + '${(newprice)}',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -661,6 +695,11 @@ class City extends StatelessWidget {
             SizedBox(
               width: width! * 0.08,
             ),
+            Text("\$ " + '${(oldprice)}',
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.italic)),
           ],
         )
       ],
