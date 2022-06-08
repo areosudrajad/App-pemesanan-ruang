@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
+class profil_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,44 +85,44 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, -15),
-              blurRadius: 20,
-              color: Color.fromARGB(255, 214, 211, 211).withOpacity(0.15),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.post_add),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.manage_accounts),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) => ProfileScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   padding: EdgeInsets.symmetric(vertical: 14),
+      //   decoration: BoxDecoration(
+      //     color: Colors.white,
+      //     borderRadius: BorderRadius.only(
+      //       topLeft: Radius.circular(20),
+      //       topRight: Radius.circular(20),
+      //     ),
+      //     boxShadow: [
+      //       BoxShadow(
+      //         offset: Offset(0, -15),
+      //         blurRadius: 20,
+      //         color: Color.fromARGB(255, 214, 211, 211).withOpacity(0.15),
+      //       ),
+      //     ],
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: [
+      //       IconButton(
+      //         icon: Icon(Icons.home),
+      //         onPressed: () {},
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.post_add),
+      //         onPressed: () {},
+      //       ),
+      //       IconButton(
+      //         icon: Icon(Icons.manage_accounts),
+      //         onPressed: () {
+      //           Navigator.of(context).pushReplacement(
+      //               MaterialPageRoute(builder: (_) => profil_screen()),
+      //           );
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

@@ -44,7 +44,7 @@ class _login_screenState extends State<login_screen> {
           SizedBox(
             height: 50,
           ),
-          Image.asset('images/L1.png', height: 200),
+          Image.asset('images/L1.png', height: 100),
           SizedBox(
             height: 40,
           ),
