@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main.dart' as prefix0;
-import 'main.dart';
+import 'menu_screen.dart' as prefix0;
+import 'menu_screen.dart';
 
 final Color discountBackground = prefix0.appTheme.primaryColor;
 final Color flightColor = prefix0.appTheme.primaryColor;
