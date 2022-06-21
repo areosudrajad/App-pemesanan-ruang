@@ -1,114 +1,136 @@
-import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'dart:js';
 
-class login_screen extends StatefulWidget {
-  const login_screen({Key? key}) : super(key: key);
+import 'package:app_pemesaanan_ruang/backupmain.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:app_pemesaanan_ruang/main.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<login_screen> createState() => _login_screenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _login_screenState extends State<login_screen> {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No User found for that email");
+      }
+    }
+
+    return user;
+  }
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       resizeToAvoidBottomInset: false,
-      body: Column(
+      body: ListView(
         children: [
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            'Aplikasi',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-                color: Colors.black,
-                height: 2),
-          ),
-          SizedBox(
-            height: 0.1,
-          ),
-          Text(
-            'Pemesanan Ruang',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-                color: Colors.black,
-                height: 1),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          Image.asset('images/L1.png', height: 200),
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: TextFormField(
-              controller: userNameController,
-              decoration: InputDecoration(
-                hintText: 'Masukkan username',
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                hintText: 'Masukkan password',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            width: 200,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                print('username = ${userNameController.text} ');
-                if (userNameController.text == 'admin' &&
-                    passwordController.text == 'admin') {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Login berhasil'),
-                  ));
-                  var box = Hive.box('userBox');
-                  box.put('isLogin', true);
-
-                  //Navigator.pushReplacement(context,
-                  //MaterialPageRoute(builder: (context) => HomeScreen()));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Username atau Password salah'),
-                    ),
-                  );
+          Container(
+            child: FutureBuilder(
+              future: _initializeFirebase(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return LoginScreen();
                 }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue[600],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 200, horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Pemesanan Ruang",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              child: Text('LOG IN'),
+                const Text(
+                  "Login untuk melanjutkan",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(
+                  height: 35,
+                ),
+                TextField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                      hintText: "Email",
+                      prefixIcon: Icon(Icons.mail, color: Colors.black)),
+                ),
+                SizedBox(height: 10),
+                TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: Icon(Icons.lock, color: Colors.black)),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  width: double.infinity,
+                  child: RawMaterialButton(
+                    fillColor: Colors.white,
+                    elevation: 2,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(11)),
+                    onPressed: () async {
+                      User? user = await loginUsingEmailPassword(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          context: context);
+                      print(user);
+                      if (user != null) {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => main()));
+                      }
+                    },
+                    child: Text(
+                      "LOGIN",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[900]),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
