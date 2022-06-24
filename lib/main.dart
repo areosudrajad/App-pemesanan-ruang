@@ -1,4 +1,5 @@
 //import 'package:app_pemesaanan_ruang/screen/login_screen.dart';
+import 'package:app_pemesaanan_ruang/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
@@ -19,8 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: login_screen(
-      ),
+      home: menu_screen(),
     );
   }
 }
@@ -31,4 +31,3 @@ ThemeData appTheme = ThemeData(
     secondaryHeaderColor: Colors.blue /* Colors.teal*/
     // fontFamily:
     );
-
