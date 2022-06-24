@@ -1,3 +1,4 @@
+import 'package:app_pemesaanan_ruang/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -34,7 +35,7 @@ class _login_screenState extends State<login_screen> {
             height: 0.1,
           ),
           Text(
-            'Pemesanan Ruang',
+            'Penyewaan Ruang UDB',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
@@ -89,9 +90,12 @@ class _login_screenState extends State<login_screen> {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('Login berhasil'),
                   ));
-                  var box = Hive.box('userBox');
-                  box.put('isLogin', true);
-
+                  //var box = Hive.box('userBox');
+                  //box.put('isLogin', true);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => menu_screen()),
+                  );
                   //Navigator.pushReplacement(context,
                   //MaterialPageRoute(builder: (context) => HomeScreen()));
                 } else {

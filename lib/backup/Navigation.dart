@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:app_pemesaanan_ruang/main.dart';
 
 //Unused
 // ignore: must_be_immutable
