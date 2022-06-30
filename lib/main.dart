@@ -2,9 +2,12 @@
 import 'package:app_pemesaanan_ruang/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 int _selectedIndex = 0;
-void main() {
+void main() async {
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: menu_screen(),
+      home: login_screen(),
     );
   }
 }
