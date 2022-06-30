@@ -9,10 +9,10 @@ import 'main.dart';
 import 'package:app_pemesaanan_ruang/secondpage.dart';
 
 class menu_screen extends StatelessWidget {
-//const menu_screen({Key? key, required this.title}) : super(key: key);
+  String username;
+menu_screen({Key? key, required this.username}) : super(key: key);
 
   //final String title;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,11 @@ class menu_screen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   textStyle: const TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold)),
+                    fontSize: 20,
+                  ),
+                  fixedSize: const Size(250, 80),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
             ),
             SizedBox(
               height: 25,
@@ -61,7 +65,10 @@ class menu_screen extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   textStyle: const TextStyle(
                     fontSize: 20,
-                  )),
+                  ),
+                  fixedSize: const Size(250, 80),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
             ),
           ],
         ),
@@ -71,11 +78,21 @@ class menu_screen extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            UserAccountsDrawerHeader(
+              //membuat gambar profil
+              currentAccountPicture: Image(
+                  image: NetworkImage(
+                      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")),
+              //membuat nama akun
+              accountName: Text('$username'),
+              //membuat nama email
+              accountEmail: Text(""),
+              //memberikan background
               decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Penyewaan Ruang'),
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://cdn.pixabay.com/photo/2016/04/24/20/52/laundry-1350593_960_720.jpg"),
+                      fit: BoxFit.cover)),
             ),
             ListTile(
               leading: Icon(
@@ -99,7 +116,9 @@ class menu_screen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => profile_screen()),
+                  MaterialPageRoute(builder: (context) => profile_screen(
+                    usernameP: username,
+                  )),
                 );
               },
             ),

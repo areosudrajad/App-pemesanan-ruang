@@ -4,6 +4,8 @@ import 'package:app_pemesaanan_ruang/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class profile_screen extends StatelessWidget {
+  String usernameP;
+  profile_screen({Key? key, required this.usernameP}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,7 +75,7 @@ class profile_screen extends StatelessWidget {
                           Icons.person_outline,
                         ),
                         title: Text(
-                          'Nama user',
+                          '$usernameP',
                           style: TextStyle(fontSize: 15),
                         ),
                       ),
@@ -118,7 +120,9 @@ class profile_screen extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => login_screen()),
+                                builder: (context) => login_screen(
+                                  
+                                )),
                           );
                         },
                         child: const Text('Logout'),

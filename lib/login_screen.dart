@@ -11,8 +11,38 @@ class login_screen extends StatefulWidget {
 }
 
 class _login_screenState extends State<login_screen> {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  bool isChecked = false;
+  TextEditingController usernameC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  String usernameadmin = 'admin';
+  String passwordadmin = 'admin';
+  String usernameuser = 'user';
+  String passworduser = 'user';
+
+  late Box box1;
+  @override
+  void initState() {
+    super.initState();
+    createOpenBox();
+  }
+
+  void createOpenBox() async {
+    box1 = await Hive.openBox('logindata');
+    getdata();
+  }
+
+  void getdata() async {
+    if (box1.get('usernameC') != null) {
+      usernameC.text = box1.get('usernameC');
+      isChecked = true;
+      setState(() {});
+    }
+    if (box1.get('passwordC') != null) {
+      passwordC.text = box1.get('passwordC');
+      isChecked = true;
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +82,7 @@ class _login_screenState extends State<login_screen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             child: TextFormField(
-              controller: userNameController,
+              controller: usernameC,
               decoration: InputDecoration(
                 hintText: 'Masukkan username',
                 prefixIcon: Icon(Icons.person),
@@ -65,7 +95,7 @@ class _login_screenState extends State<login_screen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             child: TextFormField(
-              controller: passwordController,
+              controller: passwordC,
               obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
@@ -84,17 +114,38 @@ class _login_screenState extends State<login_screen> {
             height: 50,
             child: ElevatedButton(
               onPressed: () {
-                print('username = ${userNameController.text} ');
-                if (userNameController.text == 'admin' &&
-                    passwordController.text == 'admin') {
+                print('username = ${usernameC.text} ');
+                if (usernameC.text == usernameadmin &&
+                    passwordC.text == passwordadmin) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Login berhasil'),
+                    content: Text('Login berhasil ${usernameC.text}'),
                   ));
+                  login();
                   //var box = Hive.box('userBox');
                   //box.put('isLogin', true);
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => menu_screen()),
+                    MaterialPageRoute(
+                        builder: (context) => menu_screen(
+                              username: usernameC.text,
+                            )),
+                  );
+                  //Navigator.pushReplacement(context,
+                  //MaterialPageRoute(builder: (context) => HomeScreen()));
+                } else if (usernameC.text == usernameuser &&
+                    passwordC.text == passworduser) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Login berhasil ${usernameC.text}'),
+                  ));
+                  login();
+                  //var box = Hive.box('userBox');
+                  //box.put('isLogin', true);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => menu_screen(
+                              username: usernameC.text,
+                            )),
                   );
                   //Navigator.pushReplacement(context,
                   //MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -118,5 +169,12 @@ class _login_screenState extends State<login_screen> {
         ],
       ),
     );
+  }
+
+  void login() {
+    if (isChecked) {
+      box1.put('usernameC', usernameC.value.text);
+      box1.put('passwordC', passwordC.value.text);
+    }
   }
 }
