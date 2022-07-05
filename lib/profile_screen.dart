@@ -80,6 +80,7 @@ class profile_screen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    
                     Card(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 30),

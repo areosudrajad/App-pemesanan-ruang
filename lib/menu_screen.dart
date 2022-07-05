@@ -1,3 +1,4 @@
+import 'package:app_pemesaanan_ruang/admin_screen.dart';
 import 'package:app_pemesaanan_ruang/login_screen.dart';
 import 'package:app_pemesaanan_ruang/backup/profil_screen.dart';
 import 'package:app_pemesaanan_ruang/profile_screen.dart';
@@ -8,13 +9,33 @@ import 'main.dart';
 
 import 'package:app_pemesaanan_ruang/secondpage.dart';
 
-class menu_screen extends StatelessWidget {
+class menu_screen extends StatefulWidget {
+  @override
   String username;
-menu_screen({Key? key, required this.username}) : super(key: key);
+  menu_screen({Key? key, required this.username}) : super(key: key);
+
+  _menu_screenState createState() => _menu_screenState();
+}
+
+class _menu_screenState extends State<menu_screen> {
+  bool _isVisible = false;
+
+  void showToast() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
+  void admin() {
+    if (widget.username == 'admin') {
+      showToast();
+    }
+  }
 
   //final String title;
   @override
   Widget build(BuildContext context) {
+    admin();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -34,7 +55,10 @@ menu_screen({Key? key, required this.username}) : super(key: key);
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const sewa_screen()),
+                  MaterialPageRoute(
+                      builder: (context) => sewa_screen(
+                            usernameS: widget.username,
+                          )),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -58,7 +82,12 @@ menu_screen({Key? key, required this.username}) : super(key: key);
 
             ElevatedButton(
               child: const Text('Cek Status'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => cekstatus()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                   padding:
@@ -69,6 +98,31 @@ menu_screen({Key? key, required this.username}) : super(key: key);
                   fixedSize: const Size(250, 80),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50))),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Visibility(
+              visible: _isVisible,
+              child: ElevatedButton(
+                child: const Text('[ADMIN] Terima Tolak Sewa'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => admin_screen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 201, 89, 81),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                    ),
+                    fixedSize: const Size(250, 80),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+              ),
             ),
           ],
         ),
@@ -84,7 +138,7 @@ menu_screen({Key? key, required this.username}) : super(key: key);
                   image: NetworkImage(
                       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")),
               //membuat nama akun
-              accountName: Text('$username'),
+              accountName: Text(widget.username),
               //membuat nama email
               accountEmail: Text(""),
               //memberikan background
@@ -94,20 +148,20 @@ menu_screen({Key? key, required this.username}) : super(key: key);
                           "https://cdn.pixabay.com/photo/2016/04/24/20/52/laundry-1350593_960_720.jpg"),
                       fit: BoxFit.cover)),
             ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-              ),
-              title: const Text('SecondPage'),
-              onTap: () {
-                //Navigator.pop(context);
-                //onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Second()),
-                );
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(
+            //     Icons.home,
+            //   ),
+            //   title: const Text('SecondPage'),
+            //   onTap: () {
+            //     //Navigator.pop(context);
+            //     //onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const Second()),
+            //     );
+            //   },
+            // ),
             ListTile(
               leading: Icon(
                 Icons.person,
@@ -116,9 +170,10 @@ menu_screen({Key? key, required this.username}) : super(key: key);
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => profile_screen(
-                    usernameP: username,
-                  )),
+                  MaterialPageRoute(
+                      builder: (context) => profile_screen(
+                            usernameP: widget.username,
+                          )),
                 );
               },
             ),

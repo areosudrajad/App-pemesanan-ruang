@@ -1,0 +1,12 @@
+ Container(
+              child: MaterialButton(
+                child: Text('Submit'),
+                color: Colors.blueGrey,
+                textColor: Colors.white,
+                onPressed: () {
+                  print("Kota yang dipilih :" +
+                      "$nilaiKota" +
+                      nKota); //print data ketika menekan tombol submit
+                },
+              ),
+            ),
