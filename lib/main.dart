@@ -1,5 +1,6 @@
 //import 'package:app_pemesaanan_ruang/screen/login_screen.dart';
 import 'package:app_pemesaanan_ruang/menu_screen.dart';
+import 'package:app_pemesaanan_ruang/sewa_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'package:hive/hive.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // home: sewa_screen(usernameS: 'ad',),
       home: login_screen(),
     );
   }
