@@ -47,125 +47,136 @@ class _login_screenState extends State<login_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      backgroundColor: Color.fromARGB(255, 0, 28, 52),
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
-          ),
-          Text(
-            'Aplikasi',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-                color: Colors.black,
-                height: 2),
-          ),
-          SizedBox(
-            height: 0.1,
-          ),
-          Text(
-            'Penyewaan Ruang UDB',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-                color: Colors.black,
-                height: 1),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          Image.asset('images/L1.png', height: 100),
-          SizedBox(
-            height: 40,
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: TextFormField(
-              controller: usernameC,
-              decoration: InputDecoration(
-                hintText: 'Masukkan username',
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 230),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pemesanan Ruang',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 27,
+                      color: Colors.amber),
                 ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: TextFormField(
-              controller: passwordC,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                hintText: 'Masukkan password',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
+                SizedBox(
+                  height: 0.1,
                 ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            width: 200,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                print('username = ${usernameC.text} ');
-                if (usernameC.text == usernameadmin &&
-                    passwordC.text == passwordadmin) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Login berhasil ${usernameC.text}'),
-                  ));
-                  login();
-                  //var box = Hive.box('userBox');
-                  //box.put('isLogin', true);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => menu_screen(
-                              username: usernameC.text,
-                            )),
-                  );
-                  //Navigator.pushReplacement(context,
-                  //MaterialPageRoute(builder: (context) => HomeScreen()));
-                } else if (usernameC.text == usernameuser &&
-                    passwordC.text == passworduser) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Login berhasil ${usernameC.text}'),
-                  ));
-                  login();
-                  //var box = Hive.box('userBox');
-                  //box.put('isLogin', true);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => menu_screen(
-                              username: usernameC.text,
-                            )),
-                  );
-                  //Navigator.pushReplacement(context,
-                  //MaterialPageRoute(builder: (context) => HomeScreen()));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Username atau Password salah'),
+                Text(
+                  'Login untuk melanjutkan',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.amber),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 2, vertical: 20),
+                  child: TextFormField(
+                    controller: usernameC,
+                    decoration: InputDecoration(
+                      hintText: 'Email',
+                      prefixIcon: Icon(
+                        Icons.mail,
+                        color: Colors.black,
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12)),
                     ),
-                  );
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue[600],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+                  ),
                 ),
-              ),
-              child: Text('LOG IN'),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
+                  child: TextFormField(
+                    controller: passwordC,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: 'Password',
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12))),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 350,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print('username = ${usernameC.text} ');
+                      if (usernameC.text == usernameadmin &&
+                          passwordC.text == passwordadmin) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Login berhasil ${usernameC.text}'),
+                        ));
+                        login();
+                        //var box = Hive.box('userBox');
+                        //box.put('isLogin', true);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => menu_screen(
+                                    username: usernameC.text,
+                                  )),
+                        );
+                        //Navigator.pushReplacement(context,
+                        //MaterialPageRoute(builder: (context) => HomeScreen()));
+                      } else if (usernameC.text == usernameuser &&
+                          passwordC.text == passworduser) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Login berhasil ${usernameC.text}'),
+                        ));
+                        login();
+                        //var box = Hive.box('userBox');
+                        //box.put('isLogin', true);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => menu_screen(
+                                    username: usernameC.text,
+                                  )),
+                        );
+                        //Navigator.pushReplacement(context,
+                        //MaterialPageRoute(builder: (context) => HomeScreen()));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Username atau Password salah'),
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: Text(
+                      'LOG IN',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );
