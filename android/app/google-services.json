@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1056630922862",
+    "project_id": "pr-login-225e8",
+    "storage_bucket": "pr-login-225e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056630922862:android:616e5f9a85cf1190c3107f",
+        "android_client_info": {
+          "package_name": "com.example.app_pemesanan_ruang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056630922862-hmpi6hcud9bqapgekia994etr4h60ah2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNn9NK8MWtO7pt4EpGKmqAbPZrAgQeSgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056630922862-hmpi6hcud9bqapgekia994etr4h60ah2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
